@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 # data_processing/views.py
 from django.http import JsonResponse
-from .utils.infer_data_types import infer_and_convert_data_types
+from .utils.infer_data_types4 import infer_and_convert_data_types
 import pandas as pd
 
 def upload_and_infer(request):
