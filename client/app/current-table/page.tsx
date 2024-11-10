@@ -16,7 +16,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-10">
-      <h1 className="text-2xl font-medium">home page</h1>
+      <h1 className="text-2xl font-medium">Current Table</h1>
     </div>
   );
 }

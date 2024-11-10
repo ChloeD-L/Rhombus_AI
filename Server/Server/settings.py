@@ -27,7 +27,29 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+# Allow all origins for CORS (Only use this in development)
+CORS_ALLOW_ALL_ORIGINS = True
 
+# Alternatively, specify allowed origins (for development)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend (Next.js) running on localhost:3000
+]
+
+# Allow all HTTP methods for CORS
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+
+# Allowed headers for CORS requests
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+]
 
 # Application definition
 
