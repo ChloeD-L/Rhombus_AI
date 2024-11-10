@@ -2,7 +2,11 @@ logs/
 temp/
 
 # Python cache files
+# 忽略 Python 缓存文件
 __pycache__/
+*.py[cod]
+
+*/__pycache__/
 *.py[cod]
 
 # Virtual environment folders
