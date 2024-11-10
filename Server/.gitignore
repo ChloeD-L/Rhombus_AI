@@ -1,2 +1,40 @@
 logs/
 temp/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment folders
+env/
+venv/
+.rhombusenv/
+
+# Django-related files
+*.log
+db.sqlite3
+media/
+
+# VS Code configuration files
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Python packaging files
+*.egg-info/
+dist/
+build/
+
+# Byte-compiled or optimized files
+*.pyo
+*.pyd
+
+# Environment variables file
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Node.js dependency folder (if using JavaScript/TypeScript)
+node_modules/

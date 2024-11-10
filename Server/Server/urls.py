@@ -21,4 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('data_processing/', include('data_processing.urls')),  # 包含 data_processing 的 URL
+    
 ]
