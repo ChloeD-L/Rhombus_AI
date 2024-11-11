@@ -55,6 +55,7 @@ export default function UploadPage() {
     formData.append("file", file);
 
     try {
+      console.log(token);
       const response: AxiosResponse<UploadResponse> = await uploadFile(formData, token, setProgress);
       console.log("upload", response.data.data);
       console.log("upload", response.data.data_types);
