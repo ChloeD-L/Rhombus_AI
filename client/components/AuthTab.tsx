@@ -61,7 +61,6 @@ const AuthTabs: React.FC = () => {
         </TabsTrigger>
       </TabsList>
 
-      {/* 登录表单 */}
       <TabsContent value="login">
         <Card>
           <CardHeader>

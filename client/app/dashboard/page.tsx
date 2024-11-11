@@ -15,8 +15,8 @@ const dashboardPage = () => {
   }, [token, router]);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="flex flex-col items-center justify-center pt-24">
+      <h1 className="text-2xl py-4">Dashboard</h1>
       <p>Welcome to the dashboard</p>
     </div>
   );

@@ -19,7 +19,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // Initialize token from localStorage
   const [token, setToken] = useState<string>("");
 
-  // 使用 useEffect 来从 localStorage 获取 token，避免 SSR 阶段访问 window 对象
   useEffect(() => {
     const storedToken = localStorage.getItem("token") || "";
     setToken(storedToken);

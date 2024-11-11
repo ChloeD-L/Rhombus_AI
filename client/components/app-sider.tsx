@@ -40,8 +40,10 @@ export function AppSidebar() {
   useEffect(() => {
     // 如果没有 token，隐藏 Sidebar
     if (!token) {
+      console.log("token", token);
       setOpen(false);
     }
+    setOpen(true);
   }, [token, setOpen]);
 
   if (!token) {
