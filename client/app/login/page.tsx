@@ -6,7 +6,6 @@ import React, { useEffect } from "react";
 
 export default function LoginPage() {
   const { setToken } = useUserContext();
-  // 使用 useEffect 在客户端渲染时清理 localStorage
   useEffect(() => {
     console.log("Clearing localStorage...");
     setToken("");

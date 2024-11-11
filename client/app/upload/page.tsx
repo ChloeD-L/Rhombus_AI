@@ -4,52 +4,56 @@ import DataTable from "@/components/DataTable";
 import { useUserContext } from "@/context/UserContext";
 import { UploadResponse, uploadChunk, uploadFile } from "@/utils/api";
 import { AxiosResponse } from "axios";
-import { useRouter } from "next/navigation";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const CHUNK_SIZE = 5 * 1024 * 1024; // 每个块的大小为 5MB
-const FILE_SIZE_THRESHOLD = 10 * 1024 * 1024; // 阈值为 10MB
+// Define chunk size for file uploads (5MB per chunk)
+const CHUNK_SIZE = 5 * 1024 * 1024;
+// Set file size threshold (10MB) to decide between single and chunked upload
+const FILE_SIZE_THRESHOLD = 10 * 1024 * 1024;
 
 export default function UploadPage() {
+  // Access user token from context
   const { token, setToken } = useUserContext();
 
+  // Define state for file, upload progress, uploaded data, and data types
   const [file, setFile] = useState<File | null>(null);
   const [progress, setProgress] = useState<number>(0);
   const [uploadedData, setUploadedData] = useState<any[]>([]);
   const [dataTypes, setDataTypes] = useState<Record<string, string>>({});
 
+  // Handle file selection
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
-      // 检查文件类型是否为 .csv 或 .xlsx
+      // Check if the file type is .csv or .xlsx
       const validTypes = [
-        "text/csv", // MIME 类型：CSV 文件
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // MIME 类型：Excel 文件 (.xlsx)
+        "text/csv", // MIME type for CSV files
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // MIME type for Excel files (.xlsx)
       ];
 
-      // 检查文件扩展名
+      // Check the file extension
       const fileExtension = selectedFile.name.split(".").pop()?.toLowerCase();
       const validExtensions = ["csv", "xlsx"];
 
-      // 判断文件类型
+      // Validate the file type
       if (!validTypes.includes(selectedFile.type) && !validExtensions.includes(fileExtension || "")) {
         alert("Invalid file type. Please upload a .csv or .xlsx file.");
         return;
       }
 
-      // 检查文件大小（可选），例如限制在 100MB 以内
+      // Optionally check the file size (limit to 100MB)
       const maxSize = 100 * 1024 * 1024;
       if (selectedFile.size > maxSize) {
         alert("File is too large. Please upload a file smaller than 100MB.");
         return;
       }
 
-      // 如果文件合法，则设置文件
+      // Set the selected file if valid
       setFile(selectedFile);
     }
   };
 
-  // Upload single file
+  // Upload a single file
   const uploadSingleFile = async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -67,6 +71,7 @@ export default function UploadPage() {
     }
   };
 
+  // Upload a large file in chunks
   const uploadChunkedFile = async (file: File) => {
     const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
     let uploadedChunks = 0;
@@ -95,10 +100,11 @@ export default function UploadPage() {
     alert("Chunked file upload completed successfully!");
   };
 
-  // Handle file upload
+  // Handle file upload based on file size
   const handleUpload = async () => {
     if (!file) return alert("Please select a file");
 
+    // Use single upload for small files, chunked upload for larger files
     if (file.size <= FILE_SIZE_THRESHOLD) {
       await uploadSingleFile(file);
     } else {
@@ -113,7 +119,7 @@ export default function UploadPage() {
       <button onClick={handleUpload}>Upload File</button>
       <progress value={progress} max={100} />
 
-      {/* 上传成功后显示表格 */}
+      {/* Display the uploaded data in a table if upload is successful */}
       {uploadedData.length > 0 && (
         <div className="w-full mt-10">
           <h2 className="text-xl font-semibold mb-4">Uploaded Data</h2>

@@ -17,7 +17,4 @@ export default function HomePage() {
   });
 
   return null;
-  // <div className="flex flex-col items-center justify-center min-h-screen gap-10">
-  //   <h1 className="text-2xl font-medium">home page</h1>
-  // </div>
 }
