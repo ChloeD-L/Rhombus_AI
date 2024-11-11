@@ -31,11 +31,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <UserProvider>
-          {/* {" "}
+          {" "}
           <SidebarProvider>
-            <AppSidebar /> */}
-          <MainLayout>{children}</MainLayout>
-          {/* </SidebarProvider> */}
+            <AppSidebar />
+            <MainLayout>{children}</MainLayout>
+          </SidebarProvider>
         </UserProvider>
       </body>
     </html>
