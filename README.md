@@ -68,6 +68,8 @@ Set up and activate a Python virtual environment:
 ```
 python3 -m venv rhombusenv
 source rhombusenv/bin/activate
+pip install -r requirements.txt
+
 ```
 
 Migrate Database
