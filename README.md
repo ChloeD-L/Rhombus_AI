@@ -95,3 +95,7 @@ python manage.py runserver
 ```
 
 The backend will be available at http://127.0.0.1:8000.
+
+# Version
+
+- **v1.0.0** - Initial release with basic data processing and dashboard UI.
